@@ -7,7 +7,7 @@ http.createServer(function (request, response) {
     request.on("error", (error) => {
         response.statusCode = 400;
         response.setHeader("Content-type", "application.json");
-        response.write(json.stringify(error));
+        response.write(JSON.stringify(error));
         response.end();
     }).on("data", (chunk) => {
         chunks.push(chunk);
@@ -22,7 +22,7 @@ http.createServer(function (request, response) {
         response.on("error", (error) => {
             response.statusCode = 500;
             response.setHeader("Content-type", "application.json");
-            response.write(json.stringify(error));
+            response.write(JSON.stringify(error));
             response.end();
         });
 
@@ -38,11 +38,11 @@ http.createServer(function (request, response) {
             }
     
                 response.setHeader("Content-type", "application/json");
-                response.write(json.stringify(details));
+                response.write(JSON.stringify(details));
             break;
             case "/echo":
                 response.setHeader("Content-type", "application/json");
-                response.write(json.stringify(responseBody));
+                response.write(JSON.stringify(responseBody));
             break;
             default:
                 response.setHeader("Content-type", "text/html");
